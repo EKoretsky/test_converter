@@ -1,0 +1,7 @@
+### GET request to example server
+GET https://api.currencyapi.com/v3/currencies?type=fiat
+apiKey: cur_live_iDz7rGjwEyz22krDxaZZ0wt7uutsQDG0TqbpIux9
+
+###
+GET https://api.currencyapi.com/v3/latest?base_currency=RUB
+apiKey: cur_live_iDz7rGjwEyz22krDxaZZ0wt7uutsQDG0TqbpIux9

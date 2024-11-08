@@ -14,7 +14,6 @@ class AppListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20),
       title: title,
       trailing: const Icon(CupertinoIcons.chevron_forward),
       onTap: onTap,

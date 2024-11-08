@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 class AppCard extends StatelessWidget {
   const AppCard({
     super.key,
-    required this.child,
+    required this.children,
   });
 
-  final Widget child;
+  final List<Widget> children;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,10 @@ class AppCard extends StatelessWidget {
       child: Card(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 10.0),
-          child: child,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: children,
+          ),
         ),
       ),
     );

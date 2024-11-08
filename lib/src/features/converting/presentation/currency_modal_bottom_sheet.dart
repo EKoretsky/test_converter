@@ -23,7 +23,6 @@ class CurrencyModalBottomSheet extends StatelessWidget {
               final currency = vm.currencies[index];
               return ListTile(
                 leading: Text(currency.code),
-                contentPadding: const EdgeInsets.symmetric(horizontal: 20),
                 title: Text(currency.name),
                 trailing: const Icon(CupertinoIcons.chevron_forward),
                 onTap: () {

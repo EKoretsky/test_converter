@@ -13,7 +13,9 @@ class AppTheme {
       cardTheme: const CardTheme(
         clipBehavior: Clip.antiAlias,
       ),
-      listTileTheme: const ListTileThemeData(),
+      listTileTheme: const ListTileThemeData(
+        contentPadding: EdgeInsets.symmetric(horizontal: 20),
+      ),
       bottomSheetTheme: const BottomSheetThemeData(
         showDragHandle: true,
         constraints: BoxConstraints(

@@ -1,3 +1,5 @@
+import 'package:currency/src/features/converting/data/models/convert_rate_model.dart';
+import 'package:currency/src/features/converting/data/models/currency_model.dart';
 import 'package:currency/src/features/converting/data/remote/currencies_data_source.dart';
 import 'package:currency/src/features/converting/domain/entity/currency.dart';
 import 'package:currency/src/features/converting/domain/entity/rate.dart';
@@ -9,18 +11,17 @@ final class CurrenciesRepository implements ICurrenciesRepository {
   final ICurrenciesDataSource dataSource;
 
   @override
-  Future<Rate> fetchRate(
-      {required String baseCurrency, required String to}) async {
-    final model =
-        await dataSource.fetchRate(baseCurrency: baseCurrency, to: to);
-    return Rate(code: model.code, value: model.value);
+  Future<Rate> fetchRate({required String base, required String to}) async {
+    final model = await dataSource.fetchRate(
+      base: base,
+      currency: to,
+    );
+    return model.toRate();
   }
 
   @override
   Future<List<Currency>> getCurrencies() async {
     final models = await dataSource.getCurrencies();
-    return models.map((e) {
-      return Currency(name: e.name, code: e.code);
-    }).toList();
+    return models.map((model) => model.toCurrency()).toList();
   }
 }

@@ -1,3 +1,5 @@
+import 'package:currency/src/features/converting/domain/entity/currency.dart';
+
 class CurrencyModel {
   CurrencyModel({
     required this.code,
@@ -23,4 +25,10 @@ class CurrencyModel {
 
   @override
   String toString() => 'CurrencyModel{code: $code, name: $name}';
+}
+
+extension ToCurrency on CurrencyModel {
+  Currency toCurrency() {
+    return Currency(code: code, name: name);
+  }
 }

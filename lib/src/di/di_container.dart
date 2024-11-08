@@ -1,6 +1,6 @@
+import 'package:currency/src/config/api_config.dart';
 import 'package:currency/src/features/converting/data/remote/currencies_data_source.dart';
 import 'package:currency/src/features/converting/data/repositories/currencies_repository.dart';
-import 'package:currency/src/features/converting/presentation/vm/conver_rate_vm.dart';
 import 'package:currency/src/features/converting/presentation/vm/currencies_vm.dart';
 import 'package:currency/src/theming/app_theme.dart';
 import 'package:dio/dio.dart';
@@ -22,10 +22,12 @@ class DiContainer extends StatelessWidget {
         Provider(
           create: (context) => AppTheme(),
         ),
+        Provider.value(value: dioConfig),
         Provider(
           create: (context) {
+            final dio = context.read<Dio>();
             return CurrenciesRepository(
-              CurrenciesDataSource(Dio()),
+              CurrenciesDataSource(dio),
             );
           },
         ),
@@ -34,11 +36,6 @@ class DiContainer extends StatelessWidget {
             return CurrenciesVm(context.read<CurrenciesRepository>());
           },
         ),
-        ChangeNotifierProvider(
-          create: (context) {
-            return ConvertRateVm(context.read<CurrenciesRepository>());
-          },
-        )
       ],
       child: child,
     );
